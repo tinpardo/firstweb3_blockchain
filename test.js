@@ -7,10 +7,11 @@ const abi = JSON.parse(contractABI)
 
 var helloworld = new web3.eth.Contract(abi,contractAdress);
 
-console.log(helloworld.methods.hello().call().then(result => {console.log(result);}));
-web3.eth.getAccounts().then(console.log);
 
 document.addEventListener('DOMContentLoaded', () => { 
+
+	helloworld.methods.hello().call().then(result => {document.getElementById('hello').innerHTML = result; });
+	web3.eth.getAccounts().then(result => {document.getElementById('cuentas').innerHTML = result[0];});
  //const $setData = document.getElementById('setdata');
  //const $getData = document.getElementById('getdata');
 
